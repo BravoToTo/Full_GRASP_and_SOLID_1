@@ -34,5 +34,17 @@ namespace Full_GRASP_And_SOLID.Library
                     $"usando '{step.Equipment.Description}' durante {step.Time}");
             }
         }
+
+        // Se utiliza el principio expert.
+        public double GetProductionCost()
+        {
+            double total = 0;
+            foreach (Step step in this.steps)
+            {
+                total += step.Equipment.HourlyCost * step.Time; // Costo equipamiento
+                total += step.Input.UnitCost * step.Quantity; // Costo insumos
+            }
+            return total;
+        }
     }
 }
